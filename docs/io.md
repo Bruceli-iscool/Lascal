@@ -1,3 +1,3 @@
 # IO
 
-The Output function in Liscal is `println`.
+The Output function in Lascal is `println`.

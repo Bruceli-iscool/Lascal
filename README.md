@@ -1,2 +1,2 @@
-# Liscal
-The Liscal programming language
+# Lascal
+The Lascal programming language
