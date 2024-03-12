@@ -12,12 +12,10 @@ def interpret(line):
         elif line.startswith("//"):
             return
         else:
-            print("Liscal: Syntax Error: Statements outside main.")
+            print("Lascal: Syntax Error: Statements outside main.")
     else:
         if line.startswith("end."):
             mode = 0
-        elif line.startswith("//"):
-            return
         else:
             process.process(line)
 interpret("start")
