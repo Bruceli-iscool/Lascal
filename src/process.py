@@ -1,3 +1,5 @@
+import stdlib
+
 def process(line):
     if ";" in line:
         line = line.replace(';', "")
