@@ -5,3 +5,5 @@ def variables(line, dict):
     line = line.replace(" ", "")
     name, value = line.split("=")
     dict[name] = value
+def input_statement():
+    pass
