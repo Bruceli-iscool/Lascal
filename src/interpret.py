@@ -1,6 +1,7 @@
 import process
 import stdlib
 
+name = 0
 mode = 0
 var = {}
 procedures = {}
@@ -9,15 +10,16 @@ def interpret(line):
     # set as global variable
     global mode
     line = line.lstrip()
-    if  mode != 1:
+    if  mode ==0:
         if line.startswith("start"):
             mode = 1
         elif line.startswith("//"):
             return
         elif line.startswith("procedure "):
-            mode = 2
+            global name
             line = line.replace("{", "")
             name = line.replace(" ", "")
+            mode = 2
         elif "=" in line:
             stdlib.variables(line, var)
         elif len(line) < 1 or line == " ":
@@ -34,7 +36,7 @@ def interpret(line):
             process.process(line, var, 1)
     elif mode == 2:
         if line.replace(" ", "") == name:
-            pass
+            return
         elif line.startswith("}"):
             mode = 0
         else:
