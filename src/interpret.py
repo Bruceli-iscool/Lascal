@@ -1,4 +1,5 @@
 import process
+import stdlib
 
 mode = 0
 var = {}
@@ -12,13 +13,18 @@ def interpret(line):
             mode = 1
         elif line.startswith("//"):
             return
+        elif "=" in line:
+            stdlib.variables(line, var)
         else:
-            print("Lascal: Syntax Error: Statements outside main.")
+            print(f"Lascal: Syntax Error: Statements outside main at [{line}].")
+            return
     else:
         if line.startswith("end."):
             mode = 0
         else:
             process.process(line, var)
+            
+interpret("x = 5;")
 interpret("start")
-interpret("println 1;")
+interpret("println x;")
 interpret("end.")
