@@ -22,9 +22,6 @@ def interpret(line):
         if line.startswith("end."):
             mode = 0
         else:
-            process.process(line, var)
+            process.process(line, var, 1)
             
-interpret("x = 5;")
-interpret("start")
-interpret("println x;")
-interpret("end.")
+

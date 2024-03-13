@@ -2,7 +2,7 @@ import process
 # Standard Libary
 
 def stdlibStatements(line, dict):
-    cb = process.process(line, dict)
+    cb = process.process(line, dict, 2)
     return cb
 def variables(line, dict):
     """Store variables"""
@@ -19,7 +19,7 @@ def input_statement(line, dict):
     elif '"' in line:
         line =line.replace('"', "")
     for key, value in dict.items():
-        line = line.replace(str(key, value))
+        line = line.replace(str(key), str(value))
     value = input(line)
     if type(value) == str:
         value = "'" + value + "'"
