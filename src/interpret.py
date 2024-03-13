@@ -1,6 +1,7 @@
 import process
 
 mode = 0
+var = {}
 
 def interpret(line):
     # set as global variable
@@ -17,7 +18,7 @@ def interpret(line):
         if line.startswith("end."):
             mode = 0
         else:
-            process.process(line)
+            process.process(line, var)
 interpret("start")
 interpret("println 1;")
 interpret("end.")
