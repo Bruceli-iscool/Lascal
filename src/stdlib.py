@@ -14,7 +14,7 @@ def variables(line, dict, funcdict):
             line = line.replace(";", "")
             line = line.replace(" ", "")
             unpack_functions.unpackF(line, funcdict, dict)
-    value = stdlibStatements(value, dict, funcdict)
+    value = stdlibStatements(value, funcdict, dict)
     dict[name] = value
 def input_statement(line, dict):
     """Accept Input"""

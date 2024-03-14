@@ -35,6 +35,7 @@ def interpret(line):
             print(f"Lascal: Syntax Error: Statements outside main at [{line}].")
             return
     elif mode == 1:
+        line = line.replace(";", "")
         if line.startswith("end."):
             mode = 0
         elif len(line) < 1 or line == " ":
