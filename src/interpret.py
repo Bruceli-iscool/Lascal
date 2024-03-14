@@ -4,6 +4,7 @@ import unpack_functions
 name = 0
 mode = 0
 var = {}
+func = {}
 procedures = {}
 
 def interpret(line):
@@ -21,8 +22,14 @@ def interpret(line):
             line = line.replace("{", "")
             name = line.replace(" ", "")
             mode = 2
+        elif line.startswith("func"):
+            global name
+            line =line.replace("func ", "")
+            line = line.replace("{", "")
+            name = line.replace(" ", "")
+            mode = 3
         elif "=" in line:
-            stdlib.variables(line, var)
+            stdlib.variables(line, var, func)
         elif len(line) < 1 or line == " ":
             return
         else:
@@ -46,5 +53,12 @@ def interpret(line):
             mode = 0
         else:
             procedures[name] = ':' + line
-            print(procedures)
+    elif mode == 3:
+        if line.replace(" ", "") == name:
+            return
+        elif line.startswith("}"):
+            mode = 0
+        else:
+            func[name] = ':' + line
+        
 

@@ -1,6 +1,6 @@
 import stdlib
 
-def process(line, dict, mode=1):
+def process(line, dict, mode, funcDict):
     if ";" in line:
         line = line.replace(';', "")
     if line.startswith("println "):
@@ -15,7 +15,7 @@ def process(line, dict, mode=1):
     elif line.startswith("//"):
         return
     elif "=" in line:
-        stdlib.variables(line, dict)
+        stdlib.variables(line, dict, funcDict)
     elif line.startswith("inputln"):
         stdlib.input_statement(line, dict)
     elif mode == 1:
