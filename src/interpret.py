@@ -9,6 +9,7 @@ procedures = {}
 
 def interpret(line):
     # set as global variable
+    original_line = line
     global mode
     line = line.lstrip()
     if  mode ==0:
@@ -32,7 +33,7 @@ def interpret(line):
         elif len(line) < 1 or line == " ":
             return
         else:
-            print(f"Lascal: Syntax Error: Statements outside main at [{line}].")
+            print(f"Lascal: Syntax Error: Statements outside main at [{original_line}].")
             return
     elif mode == 1:
         line = line.replace(";", "")

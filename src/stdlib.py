@@ -26,8 +26,7 @@ def input_statement(line, dict):
     for key, value in dict.items():
         line = line.replace(str(key), str(value))
     value = input(line)
-    if type(value) == str:
-        value = "'" + value + "'"
+    value = "'" + value + "'"
     return value
 
 
