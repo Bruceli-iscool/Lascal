@@ -10,10 +10,10 @@ def variables(line, dict, funcdict):
     line = line.replace(" ", "")
     line = line.replace('\\s+', " ")
     name, value = line.split("=")
-    if line.replace(" ", "") in funcdict:
-            line = line.replace(";", "")
-            line = line.replace(" ", "")
-            unpack_functions.unpackF(line, funcdict, dict)
+    if value.replace(" ", "") in funcdict:
+            value = value.replace(";", "")
+            value = value.replace(" ", "")
+            value = unpack_functions.unpackF(value, funcdict, dict)
     value = stdlibStatements(value, funcdict, dict)
     dict[name] = value
 def input_statement(line, dict):
