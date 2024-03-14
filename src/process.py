@@ -1,6 +1,6 @@
 import stdlib
 
-def process(line, dict, mode):
+def process(line, dict, mode=1):
     if ";" in line:
         line = line.replace(';', "")
     if line.startswith("println "):

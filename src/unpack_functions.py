@@ -1,9 +1,11 @@
 import process
 
-def unpack(func, dict):
+
+def unpack(func, dict, vars):
     action = dict[func]
     action = action[0:]
-    for x in ":" in action:
-        line = action.split(":")
-        process.process(line)
-        
+    for char in action:
+        if char == ":":
+            line = action.split(":")
+            for x in line:
+                process.process(x, vars, 2)

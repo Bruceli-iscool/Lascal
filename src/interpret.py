@@ -1,6 +1,6 @@
 import process
 import stdlib
-
+import unpack_functions
 name = 0
 mode = 0
 var = {}
@@ -17,6 +17,7 @@ def interpret(line):
             return
         elif line.startswith("procedure "):
             global name
+            line = line.replace("procedure ", "")
             line = line.replace("{", "")
             name = line.replace(" ", "")
             mode = 2
@@ -32,6 +33,10 @@ def interpret(line):
             mode = 0
         elif len(line) < 1 or line == " ":
             return
+        elif line.replace(" ", "") in procedures:
+            line = line.replace(";", "")
+            line = line.replace(" ", "")
+            unpack_functions.unpack(line, procedures, var)
         else:
             process.process(line, var, 1)
     elif mode == 2:
@@ -41,4 +46,5 @@ def interpret(line):
             mode = 0
         else:
             procedures[name] = ':' + line
+            print(procedures)
 
