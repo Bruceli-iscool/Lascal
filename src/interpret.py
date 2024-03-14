@@ -23,7 +23,6 @@ def interpret(line):
             name = line.replace(" ", "")
             mode = 2
         elif line.startswith("func"):
-            global name
             line =line.replace("func ", "")
             line = line.replace("{", "")
             name = line.replace(" ", "")
@@ -44,8 +43,12 @@ def interpret(line):
             line = line.replace(";", "")
             line = line.replace(" ", "")
             unpack_functions.unpack(line, procedures, var)
+        elif line.replace(" ", "") in func:
+            line = line.replace(";", "")
+            line = line.replace(" ", "")
+            unpack_functions.unpackF(line, func, var)
         else:
-            process.process(line, var, 1)
+            process.process(line, var, 1, func)
     elif mode == 2:
         if line.replace(" ", "") == name:
             return

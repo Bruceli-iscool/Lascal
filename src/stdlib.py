@@ -2,8 +2,8 @@ import process
 import unpack_functions
 # Standard Libary
 
-def stdlibStatements(line, dict):
-    cb = process.process(line, dict, 2)
+def stdlibStatements(line, dict, funcdict):
+    cb = process.process(line, dict, 2, funcdict)
     return cb
 def variables(line, dict, funcdict):
     """Store variables"""
@@ -14,7 +14,7 @@ def variables(line, dict, funcdict):
             line = line.replace(";", "")
             line = line.replace(" ", "")
             unpack_functions.unpackF(line, funcdict, dict)
-    value = stdlibStatements(value, dict)
+    value = stdlibStatements(value, dict, funcdict)
     dict[name] = value
 def input_statement(line, dict):
     """Accept Input"""
