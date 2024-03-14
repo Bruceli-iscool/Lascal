@@ -24,5 +24,7 @@ def input_statement(line, dict):
     if type(value) == str:
         value = "'" + value + "'"
     return value
+
+
         
     
