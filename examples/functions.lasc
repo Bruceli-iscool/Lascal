@@ -1,4 +1,5 @@
-// Demonstrate functions in Lascal 
+/* Demonstrate functions in Lascal 
+*/
 func hi() {
     return "hi";
 }
