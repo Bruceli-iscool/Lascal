@@ -27,7 +27,7 @@ def input_statement(line, dict):
         line = line.replace(str(key), str(value))
     value = input(line)
     value = "'" + value + "'"
-    return value
+    return str(value)
 
 
         
