@@ -71,7 +71,7 @@ def interpret(line):
     elif mode == 4:
         if "*/" in line:
             mode = 0
-        else:
+        elif '*/' not in line:
             return
         
 

@@ -7,3 +7,4 @@ def files(path):
         for line in file:
             line = line.rstrip('\n')
             interpret.interpret(line)
+files("/workspaces/Lascal/examples/functions.lasc")

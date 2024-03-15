@@ -1,0 +1,8 @@
+// Demonstrate functions in Lascal 
+func hi() {
+    return "hi";
+}
+start
+x=hi();
+println x;
+end.
