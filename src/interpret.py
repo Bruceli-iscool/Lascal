@@ -12,6 +12,9 @@ def interpret(line):
     original_line = line
     global mode
     line = line.lstrip()
+    if line.startswith("/*"):
+        mode = 4
+        return
     if  mode ==0:
         if line.startswith("start"):
             mode = 1
@@ -65,5 +68,10 @@ def interpret(line):
             mode = 0
         else:
             func[name] = ':' + line
+    elif mode == 4:
+        if "*/" in line:
+            mode = 0
+        else:
+            return
         
 
