@@ -6,6 +6,7 @@ mode = 0
 var = {}
 func = {}
 procedures = {}
+statement = 0
 
 def interpret(line):
     # set as global variable
@@ -25,11 +26,13 @@ def interpret(line):
             line = line.replace("procedure ", "")
             line = line.replace("{", "")
             name = line.replace(" ", "")
+            procedures[name] = ""
             mode = 2
         elif line.startswith("func"):
             line =line.replace("func ", "")
             line = line.replace("{", "")
             name = line.replace(" ", "")
+            func[name] = ""
             mode = 3
         elif "=" in line:
             stdlib.variables(line, var, func)
@@ -56,6 +59,8 @@ def interpret(line):
             line = line.replace("if (", "")
             line = line.replace(")", "")
             line = line.replace("{", "")
+            global statement
+            statement = line
             mode = 5
 
         else:
@@ -66,18 +71,29 @@ def interpret(line):
         elif line.startswith("}"):
             mode = 0
         else:
-            procedures[name] = ':' + line
+            procedures[name] = procedures[name] + ':' + line
     elif mode == 3:
         if line.replace(" ", "") == name:
             return
         elif line.startswith("}"):
             mode = 0
         else:
-            func[name] = ':' + line
+            func[name] = func[name] + ':' + line
     elif mode == 4:
         if "*/" in line:
             mode = 0
         elif '*/' not in line:
             return
+    elif mode == 5:
+        if line.startswith("}"):
+            if statement:
+                unpack_functions.unpack("if_placeholder()", procedures, var)
+                procedures["if_placeholder()"] = ""
+                return
+            else:
+                return
+        else:
+            procedures["if_placeholder()"] = procedures["if_placeholder()"] + ':' + line
+
         
 
