@@ -15,4 +15,3 @@ def repl():
             print("Lascal and Lascal REPL are licensed under the Apache 2.0 license. Read it at: https://www.apache.org/licenses/LICENSE-2.0.html")
         else:
           interpret.interpret(userinput)
-repl()
