@@ -52,6 +52,12 @@ def interpret(line):
             line = line.replace(";", "")
             line = line.replace(" ", "")
             unpack_functions.unpackF(line, func, var)
+        elif line.startswith("if"):
+            line = line.replace("if (", "")
+            line = line.replace(")", "")
+            line = line.replace("{", "")
+            mode = 5
+
         else:
             process.process(line, var, 1, func)
     elif mode == 2:

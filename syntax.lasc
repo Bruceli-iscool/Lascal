@@ -1,0 +1,12 @@
+/* Lascal Syntax
+*/
+// functions
+func hi() {
+    return 5;
+}
+// output
+println "hi";
+// if statements
+if (1 == 1) {
+    println "hi";
+}
