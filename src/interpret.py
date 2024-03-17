@@ -61,9 +61,9 @@ def interpret(line):
             line = line.replace("{", "")
             for key, value in var.items():
                 line = line.replace(str(key), str(value))
-            procedures["if_placeholder()"] = ""
             global statement
             statement = line
+            procedures[statement] = ""
             mode = 5
 
         else:
@@ -79,7 +79,6 @@ def interpret(line):
         if line.replace(" ", "") == name:
             return
         elif line.startswith("}"):
-            print(func)
             mode = 0
         else:
             func[name] = func[name] + ':' + line
@@ -92,16 +91,20 @@ def interpret(line):
     elif mode == 5:
         if line.startswith("}"):
             if statement:
-                unpack_functions.unpack("if_placeholder()", procedures, var)
-                procedures["if_placeholder()"] = ""
-                return
+                unpack_functions.unpack(statement, procedures, var)
+                procedures[statement] = ""
             else:
                 return
         elif line == statement:
             return
         else:
-            procedures["if_placeholder()"] = procedures["if_placeholder()"] + ':' + line
+            procedures[statement] = procedures[statement] + ':' + line
             
 
         
 
+def reset():
+    global var, func, procedures
+    var = {}
+    func = {}
+    procedures = {}
