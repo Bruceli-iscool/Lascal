@@ -79,9 +79,11 @@ def interpret(line):
         if line.replace(" ", "") == name:
             return
         elif line.startswith("}"):
+            print(func)
             mode = 0
         else:
             func[name] = func[name] + ':' + line
+            print(func)
     elif mode == 4:
         if "*/" in line:
             mode = 0
@@ -95,8 +97,11 @@ def interpret(line):
                 return
             else:
                 return
+        elif line == statement:
+            return
         else:
             procedures["if_placeholder()"] = procedures["if_placeholder()"] + ':' + line
+            
 
         
 
