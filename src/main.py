@@ -15,5 +15,5 @@ while True:
     else:
         try:
             files.files(userinput)
-        except Exception as e:
+        except FileNotFoundError as e:
             print(f"Lascal: {e}")

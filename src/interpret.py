@@ -34,7 +34,7 @@ def interpret(line):
             name = line.replace(" ", "")
             func[name] = ""
             mode = 3
-        elif "=" in line:
+        elif "=" in line and "==" and "!=" not in line:
             stdlib.variables(line, var, func)
         elif len(line) < 1 or line == " ":
             return
@@ -59,6 +59,9 @@ def interpret(line):
             line = line.replace("if (", "")
             line = line.replace(")", "")
             line = line.replace("{", "")
+            for key, value in var.items():
+                line = line.replace(str(key), str(value))
+            procedures["if_placeholder()"] = ""
             global statement
             statement = line
             mode = 5

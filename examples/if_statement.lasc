@@ -1,0 +1,9 @@
+// if statements
+x = 5;
+z = 3;
+start
+if (z==x) {
+    println 5;
+
+}
+end.
