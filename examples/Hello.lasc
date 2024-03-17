@@ -1,3 +1,4 @@
 start
     println "Hello";
+    x = 5;
 end.
