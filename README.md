@@ -9,4 +9,4 @@ Lascal is a high-level procedrul programming language. Every program begins with
 Variables are dynamically typed:
 
     x = 5;
-All Lascal files end in a `.lasc` extension or a `.las` extension. `.lascal` can also be used.
+All Lascal files end in a `.lasc` extension or a `.las` extension. `.lascal` can al   
