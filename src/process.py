@@ -19,7 +19,7 @@ def process(line, dict, mode, funcDict):
             print(line)
     elif line.startswith("//"):
         return
-    elif "=" in line and "==" and "!=" not in line:
+    elif "=" in line and "==" not in line and "!=" not in line:
         stdlib.variables(line, dict, funcDict)
     elif line.startswith("inputln"):
         line = line.replace("inputln", "")

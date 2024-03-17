@@ -82,7 +82,7 @@ def interpret(line):
             mode = 0
         else:
             func[name] = func[name] + ':' + line
-            print(func)
+
     elif mode == 4:
         if "*/" in line:
             mode = 0
@@ -93,12 +93,14 @@ def interpret(line):
             if statement:
                 unpack_functions.unpack(statement, procedures, var)
                 procedures[statement] = ""
+                mode = 1
             else:
                 return
         elif line == statement:
             return
         else:
             procedures[statement] = procedures[statement] + ':' + line
+
             
 
         
