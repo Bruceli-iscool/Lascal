@@ -5,8 +5,8 @@ prod = {}
 type = 0
 statement = 0
 
-def process(line, dict, mode, funcDict):
-    global type, statement, prod
+def process(line, dict, mode, funcDict, prod=prod):
+    global type, statement
     if type == 0:
         original_line = line
         if ";" in line:
@@ -50,9 +50,11 @@ def process(line, dict, mode, funcDict):
     elif type == 1:
         if line.startswith("}"):
             if statement:
+                print("hi")
                 unpack_functions.unpack(statement, prod, dict)
                 prod[statement] = ""
                 type = 0
+                
             else:
                 return
         elif line == statement:
