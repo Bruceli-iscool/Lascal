@@ -24,7 +24,7 @@ def process(line, dict, mode, funcDict):
         stdlib.variables(line, dict, funcDict)
     elif line.startswith("inputln"):
         line = line.replace("inputln", "")
-        stdlib.input_statement(line, dict)
+        return stdlib.input_statement(line, dict)
     elif mode == 1:
         print(f"Lascal: Syntax Error: Unexpected identifier at [{original_line}].")
         return
