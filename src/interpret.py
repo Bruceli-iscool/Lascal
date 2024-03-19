@@ -55,6 +55,17 @@ def interpret(line):
             line = line.replace(";", "")
             line = line.replace(" ", "")
             unpack_functions.unpackF(line, func, var)
+        elif line.startswith("if"):
+            line = line.replace("if (", "")
+            line = line.replace(")", "")
+            line = line.replace("{", "")
+            for key, value in var.items():
+                line = line.replace(str(key), str(value))
+            global statement
+            statement = line
+            procedures[statement] = ""
+            mode = 5
+
         else:
             process.process(line, var, 1, func)
     elif mode == 2:
@@ -77,6 +88,18 @@ def interpret(line):
             mode = 0
         elif '*/' not in line:
             return
+    elif mode == 5:
+        if line.startswith("}"):
+            if statement:
+                unpack_functions.unpack(statement, procedures, var)
+                procedures[statement] = ""
+                mode = 1
+            else:
+                return
+        elif line == statement:
+            return
+        else:
+            procedures[statement] = procedures[statement] + ':' + line
 
             
 
