@@ -1,7 +1,6 @@
 import process
 import stdlib
 import unpack_functions
-
 name = 0
 mode = 0
 var = {}

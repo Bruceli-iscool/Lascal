@@ -1,4 +1,4 @@
-import process
+import interpret
 
 
 def unpack(func, dict, vars):
@@ -6,7 +6,7 @@ def unpack(func, dict, vars):
     action = action[0:]
     line = action.split(":")
     for x in line:
-        process.process(x, vars, 2, dict)
+        interpret.interpret(x)
 def unpackF(func, dict, vars):
     action = dict[func]
     action = action[0:]
@@ -18,5 +18,4 @@ def unpackF(func, dict, vars):
                 value = x.replace("return ", "")
                 return value
             else:
-                process.process(x, vars, 2, dict)
-
+                interpret.interpret(x)
