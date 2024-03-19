@@ -3,10 +3,9 @@ import unpack_functions
 
 prod = {}
 type = 0
-statement = 0
 
 def process(line, dict, mode, funcDict):
-    global type, statement, prod
+    global prod, type
     if type == 0:
         original_line = line
         if ";" in line:
@@ -48,15 +47,18 @@ def process(line, dict, mode, funcDict):
         elif mode == 2:
             return line
     elif type == 1:
-        if line.startswith("}"):
+        if_statement(line)
+    
+def if_statement(line):
+    global prod
+    if line.startswith("}"):
             if statement:
                 unpack_functions.unpack(statement, prod, dict)
                 prod[statement] = ""
                 type = 0
             else:
                 return
-        elif line == statement:
-            return
-        else:
+    elif line == statement:
+            pass
+    else:
             prod[statement] = prod[statement] + ':' + line
-    
