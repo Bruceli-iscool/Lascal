@@ -31,7 +31,7 @@ def input_statement(line, dict):
     for key, value in dict.items():
         line = line.replace(str(key), str(value))
     value = input(line)
-    value = "'" + value + "'"
+    value = str(value)
     return value
 
 

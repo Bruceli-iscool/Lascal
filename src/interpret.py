@@ -65,7 +65,7 @@ def interpret(line):
             statement = line
             procedures[statement] = ""
             mode = 5
-
+        
         else:
             process.process(line, var, 1, func)
     elif mode == 2:
