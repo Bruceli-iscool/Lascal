@@ -1,6 +1,7 @@
 import stdlib
 
 def process(line, dict, mode, funcDict):
+    original_line = line
     if ";" in line:
         line = line.replace(';', "")
     if line.startswith("println "):
@@ -25,7 +26,7 @@ def process(line, dict, mode, funcDict):
         line = line.replace("inputln", "")
         stdlib.input_statement(line, dict)
     elif mode == 1:
-        print(f"Lascal: Syntax Error: Unexpected identifier at [{line}].")
+        print(f"Lascal: Syntax Error: Unexpected identifier at [{original_line}].")
         return
     elif mode == 2:
         return line
