@@ -11,7 +11,7 @@ statement = 0
 def interpret(line):
     # set as global variable
     original_line = line
-    global mode
+    global mode, statement
     line = line.lstrip()
     if line.startswith("/*"):
         mode = 4
@@ -61,7 +61,6 @@ def interpret(line):
             line = line.replace("{", "")
             for key, value in var.items():
                 line = line.replace(str(key), str(value))
-            global statement
             statement = line
             procedures[statement] = ""
             mode = 5
@@ -71,7 +70,6 @@ def interpret(line):
             line = line.replace("{", "")
             for key, value in var.items():
                 line = line.replace(str(key), str(value))
-            global statement
             statement = line
             procedures[statement] = ""
             mode = 6
@@ -109,6 +107,18 @@ def interpret(line):
             return
         else:
             procedures[statement] = procedures[statement] + ':' + line
+    elif mode == 6:
+        if line.startswith("}"):
+            while statement:
+                unpack_functions.unpack(statement, procedures, var)
+                mode = 1
+            else:
+                return
+        elif line == statement:
+            return
+        else:
+            procedures[statement] = procedures[statement] + ':' + line
+
 
             
 
