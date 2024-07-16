@@ -12,7 +12,7 @@ def process(line, dict, mode, funcDict):
         try:
             line = eval(line)
         except Exception:
-            if '"' in line:
+            if '"' in line: 
                 line =line.replace('"', "")
             elif "'" in line:
                 line = line.replace("'", "")
