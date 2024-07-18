@@ -4,7 +4,7 @@ import repl
 import sys
 
 print("Lascal v1.1\nq() to exit or .repl to start repl session.")
-while True:
+while True: 
     userinput = input("> ")
     if userinput.startswith(".repl"):
         repl.repl()
