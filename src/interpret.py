@@ -5,7 +5,7 @@ name = 0
 mode = 0
 var = {}
 func = {}
-procedures = {}
+procedures = {} 
 statement = 0
 
 def interpret(line):
