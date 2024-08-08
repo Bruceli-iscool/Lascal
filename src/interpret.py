@@ -44,7 +44,7 @@ def interpret(line):
     elif mode == 1:
         line = line.replace(";", "")
         if line.startswith("end."):
-            mode = 0
+            mode = 0 
         elif len(line) < 1 or line == " ":
             return
         elif line.replace(" ", "") in procedures:
